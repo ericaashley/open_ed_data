@@ -1,10 +1,13 @@
 require "rails_helper"
 
-feature "guest creates account", %Q{
+feature "guest creates account", %{
   As a user
   I want to sign in
   So that I can access member-only parts of the app
 } do
+  facebook_login_success = "Successfully authenticated from Facebook account."
+  facebook_login_failure = "Could not authenticate you from Facebook because"
+
   context "new user" do
     scenario "successful sign up with facebook" do
       valid_facebook_login_setup
@@ -13,7 +16,7 @@ feature "guest creates account", %Q{
 
       click_link "Sign in with Facebook"
 
-      expect(page).to have_content("Successfully authenticated from Facebook account.")
+      expect(page).to have_content(facebook_login_success)
       expect(page).to have_link("Sign Out", user_session_path)
 
       expect(User.count).to eq(1)
@@ -26,7 +29,7 @@ feature "guest creates account", %Q{
 
       click_link "Sign in with Facebook"
 
-      expect(page).to have_content("Could not authenticate you from Facebook because")
+      expect(page).to have_content(facebook_login_failure)
       expect(page).to have_link("Sign in with Facebook", new_user_session_path)
       expect(User.count).to eq(0)
     end
@@ -43,7 +46,7 @@ feature "guest creates account", %Q{
     scenario "sign in with Facebook credentials" do
       visit new_user_session_path
       click_link "Sign in with Facebook"
-      expect(page).to have_content("Successfully authenticated from Facebook account.")
+      expect(page).to have_content(facebook_login_success)
       expect(page).to have_link("Sign Out", user_session_path)
 
       expect(User.count).to eq(1)
@@ -53,11 +56,11 @@ feature "guest creates account", %Q{
       visit new_user_session_path
       click_link "Sign in with Facebook"
 
-      expect(page).to have_content("Successfully authenticated from Facebook account.")
+      expect(page).to have_content(facebook_login_success)
 
       click_link "Sign Out"
 
-      expect(page).to_not have_content("Successfully authenticated from Facebook account.")
+      expect(page).to_not have_content(facebook_login_success)
       expect(page).to have_content("Signed out successfully.")
     end
   end
