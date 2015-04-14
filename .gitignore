@@ -17,3 +17,7 @@
 # put it into a /coverage directory. We want to ignore this to reduce noise in
 # our git commits.
 /coverage
+
+/config/secrets.yml
+/.env
+.env
