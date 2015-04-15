@@ -63,10 +63,11 @@ ActiveRecord::Schema.define(version: 20150414223141) do
   end
 
   create_table "school_title_ones", force: :cascade do |t|
-    t.string   "school_title_one_id",   null: false
-    t.string   "school_title_one_name", null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "school_title_one_id",       null: false
+    t.string   "school_title_one_eligible", null: false
+    t.string   "school_title_one_program",  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "school_types", force: :cascade do |t|
