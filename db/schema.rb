@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 20150414223141) do
   end
 
   create_table "districts", force: :cascade do |t|
-    t.string   "nces_district_id", null: false
-    t.string   "district_name",    null: false
-    t.integer  "state_id",         null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "nces_id",       null: false
+    t.string   "district_name", null: false
+    t.integer  "state_id",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "identities", force: :cascade do |t|
@@ -42,28 +42,28 @@ ActiveRecord::Schema.define(version: 20150414223141) do
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "school_charters", force: :cascade do |t|
-    t.string   "school_charter_id",   null: false
+    t.string   "nces_id",             null: false
     t.string   "school_charter_name", null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end
 
   create_table "school_levels", force: :cascade do |t|
-    t.string   "school_level_id",   null: false
+    t.string   "nces_id",           null: false
     t.string   "school_level_name", null: false
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
 
   create_table "school_magnets", force: :cascade do |t|
-    t.string   "school_magnet_id",   null: false
+    t.string   "nces_id",            null: false
     t.string   "school_magnet_name", null: false
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
 
   create_table "school_title_ones", force: :cascade do |t|
-    t.string   "school_title_one_id",       null: false
+    t.string   "nces_id",                   null: false
     t.string   "school_title_one_eligible", null: false
     t.string   "school_title_one_program",  null: false
     t.datetime "created_at",                null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20150414223141) do
   end
 
   create_table "school_types", force: :cascade do |t|
-    t.string   "school_type_id",   null: false
+    t.string   "nces_id",          null: false
     t.string   "school_type_name", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -404,7 +404,7 @@ ActiveRecord::Schema.define(version: 20150414223141) do
   end
 
   create_table "states", force: :cascade do |t|
-    t.string   "ansi",         null: false
+    t.string   "ansi_id",      null: false
     t.string   "state_name",   null: false
     t.string   "state_abbrev", null: false
     t.datetime "created_at",   null: false

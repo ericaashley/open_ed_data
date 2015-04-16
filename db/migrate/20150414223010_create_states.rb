@@ -1,7 +1,7 @@
 class CreateStates < ActiveRecord::Migration
   def change
     create_table :states do |t|
-      t.string :ansi, null: false
+      t.string :ansi_id, null: false
       t.string :state_name, null: false
       t.string :state_abbrev, null: false
 
