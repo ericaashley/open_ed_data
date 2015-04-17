@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20150414223141) do
     t.string   "lstate"
     t.string   "lzip"
     t.string   "lzip4"
-    t.string   "type"
+    t.string   "sch_type"
     t.string   "status"
     t.string   "union"
     t.string   "ulocal"

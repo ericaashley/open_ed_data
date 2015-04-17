@@ -1,5 +1,8 @@
 class CreateSchools < ActiveRecord::Migration
   def change
+    # All variable names match the original NCES dataset, with the exception of
+    # variable "TYPE" - which has been renamed to "sch_type" to avoid db seeding
+    # issues.
     create_table :schools do |t|
       t.string :survyear
       t.string :ncessch, null: false
@@ -21,7 +24,7 @@ class CreateSchools < ActiveRecord::Migration
       t.string :lstate
       t.string :lzip
       t.string :lzip4
-      t.string :type
+      t.string :sch_type
       t.string :status
       t.string :union
       t.string :ulocal
