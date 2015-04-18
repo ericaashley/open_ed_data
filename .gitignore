@@ -21,3 +21,5 @@
 /config/secrets.yml
 /.env
 .env
+
+/db/seeds
