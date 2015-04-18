@@ -131,7 +131,7 @@ seed_count = 0
 puts Time.now.strftime("%d/%m/%Y %H:%M")
 
 CSV.foreach('db/seeds/sc121a_supp.full.fixed.txt', col_sep: "\t",
-  headers: true) do |row|
+                                                   headers: true) do |row|
   ActiveRecord::Base.transaction do
     school = School.find_or_initialize_by(ncessch: row["NCESSCH"])
     school.survyear = row["SURVYEAR"]
@@ -462,7 +462,7 @@ CSV.foreach('db/seeds/sc121a_supp.full.fixed.txt', col_sep: "\t",
     district.save!
 
     city = City.find_or_initialize_by(city_name: row["LCITY"],
-      state_id: row["FIPST"])
+                                      state_id: row["FIPST"])
     city.save!
 
     seed_count += 1
