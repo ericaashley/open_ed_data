@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
-gem 'rails-api'
+gem 'rails-api', require: 'rails-api/action_controller/api'
 gem 'active_model_serializers', '0.8.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
