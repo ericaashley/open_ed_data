@@ -100,6 +100,248 @@ end
 
 puts "School Title I's populated."
 
+states = {
+  "01" => {
+    name: "Alabama",
+    abbrev: "AL"
+  },
+  "02" => {
+    name: "Alaska",
+    abbrev: "AK"
+  },
+  "04" => {
+    name: "Arizona",
+    abbrev: "AZ"
+  },
+  "05" => {
+    name: "Arkansas",
+    abbrev: "AR"
+  },
+  "06" => {
+    name: "California",
+    abbrev: "CA"
+  },
+  "08" => {
+    name: "Colorado",
+    abbrev: "CO"
+  },
+  "09" => {
+    name: "Connecticut",
+    abbrev: "CT"
+  },
+  "10" => {
+    name: "Delaware",
+    abbrev: "DE"
+  },
+  "11" => {
+    name: "District of Columbia",
+    abbrev: "DC"
+  },
+  "12" => {
+    name: "Florida",
+    abbrev: "FL"
+  },
+  "13" => {
+    name: "Georgia",
+    abbrev: "GA"
+  },
+  "15" => {
+    name: "Hawaii",
+    abbrev: "HI"
+  },
+  "16" => {
+    name: "Idaho",
+    abbrev: "ID"
+  },
+  "17" => {
+    name: "Illinois",
+    abbrev: "IL"
+  },
+  "18" => {
+    name: "Indiana",
+    abbrev: "IN"
+  },
+  "19" => {
+    name: "Iowa",
+    abbrev: "IA"
+  },
+  "20" => {
+    name: "Kansas",
+    abbrev: "KS"
+  },
+  "21" => {
+    name: "Kentucky",
+    abbrev: "KY"
+  },
+  "22" => {
+    name: "Louisiana",
+    abbrev: "LA"
+  },
+  "23" => {
+    name: "Maine",
+    abbrev: "ME"
+  },
+  "24" => {
+    name: "Maryland",
+    abbrev: "MD"
+  },
+  "25" => {
+    name: "Massachusetts",
+    abbrev: "MA"
+  },
+  "26" => {
+    name: "Michigan",
+    abbrev: "MI"
+  },
+  "27" => {
+    name: "Minnesota",
+    abbrev: "MN"
+  },
+  "28" => {
+    name: "Mississippi",
+    abbrev: "MS"
+  },
+  "29" => {
+    name: "Missouri",
+    abbrev: "MO"
+  },
+  "30" => {
+    name: "Montana",
+    abbrev: "MT"
+  },
+  "31" => {
+    name: "Nebraska",
+    abbrev: "NE"
+  },
+  "32" => {
+    name: "Nevada",
+    abbrev: "NV"
+  },
+  "33" => {
+    name: "New Hampshire",
+    abbrev: "NH"
+  },
+  "34" => {
+    name: "New Jersey",
+    abbrev: "NJ"
+  },
+  "35" => {
+    name: "New Mexico",
+    abbrev: "NM"
+  },
+  "36" => {
+    name: "New York",
+    abbrev: "NY"
+  },
+  "37" => {
+    name: "North Caraolina",
+    abbrev: "NC"
+  },
+  "38" => {
+    name: "North Dakota",
+    abbrev: "ND"
+  },
+  "39" => {
+    name: "Ohio",
+    abbrev: "OH"
+  },
+  "40" => {
+    name: "Oklahoma",
+    abbrev: "OK"
+  },
+  "41" => {
+    name: "Oregon",
+    abbrev: "OR"
+  },
+  "42" => {
+    name: "Pennsylvania",
+    abbrev: "PA"
+  },
+  "44" => {
+    name: "Rhode Island",
+    abbrev: "RI"
+  },
+  "45" => {
+    name: "South Carolina",
+    abbrev: "SC"
+  },
+  "46" => {
+    name: "South Dakota",
+    abbrev: "SD"
+  },
+  "47" => {
+    name: "Tennessee",
+    abbrev: "TN"
+  },
+  "48" => {
+    name: "Texas",
+    abbrev: "TX"
+  },
+  "49" => {
+    name: "Utah",
+    abbrev: "UT"
+  },
+  "50" => {
+    name: "Vermont",
+    abbrev: "VT"
+  },
+  "51" => {
+    name: "Virginia",
+    abbrev: "VA"
+  },
+  "53" => {
+    name: "Washington",
+    abbrev: "WA"
+  },
+  "54" => {
+    name: "West Virginia",
+    abbrev: "WV"
+  },
+  "55" => {
+    name: "Wisconsin",
+    abbrev: "WI"
+  },
+  "56" => {
+    name: "Wyoming",
+    abbrev: "WY"
+  },
+  "63" => {
+    name: "Department of Defense Education Activity",
+    abbrev: "DD"
+  },
+  "59" => {
+    name: "Bureau of Indian Education",
+    abbrev: "BI"
+  },
+  "60" => {
+    name: "American Samoa",
+    abbrev: "AS"
+  },
+  "66" => {
+    name: "Guam",
+    abbrev: "GU"
+  },
+  "69" => {
+    name: "Commonwealth of the Northern Mariana Islands",
+    abbrev: "MP"
+  },
+  "72" => {
+    name: "Puerto Rico",
+    abbrev: "PR"
+  },
+  "78" => {
+    name: "U.S. Virgin Islands",
+    abbrev: "VI"
+  }
+}
+
+states.each do |ansi_id, state|
+  State.find_or_create_by!(ansi_id: ansi_id, state_name: state[:name],
+                           state_abbrev: state[:abbrev])
+end
+
+puts "States populated."
+
 # Parse NCES CCD 2012-2013 Public Elementary/Secondary School text file.
 
 school_level_ids = Hash.new
@@ -127,6 +369,11 @@ SchoolTitleOne.find_each do |title_one|
   school_title_one_ids[title_one.nces_id] = title_one.id
 end
 
+state_ids = Hash.new
+State.find_each do |state|
+  state_ids[state.ansi_id] = state.id
+end
+
 seed_count = 0
 puts Time.now.strftime("%d/%m/%Y %H:%M")
 
@@ -135,7 +382,7 @@ CSV.foreach('db/seeds/sc121a_supp.full.fixed.txt', col_sep: "\t",
   ActiveRecord::Base.transaction do
     school = School.find_or_initialize_by(ncessch: row["NCESSCH"])
     school.survyear = row["SURVYEAR"]
-    school.fipst = row["FIPST"]
+    school.fipst = state_ids[row["FIPST"]]
     school.leaid = row["LEAID"]
     school.schno = row["SCHNO"]
     school.stid = row["STID"]
