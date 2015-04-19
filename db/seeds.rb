@@ -380,20 +380,21 @@ puts Time.now.strftime("%d/%m/%Y %H:%M")
 CSV.foreach('db/seeds/sc121a_supp.full.fixed.txt', col_sep: "\t",
                                                    headers: true) do |row|
   ActiveRecord::Base.transaction do
+    state_id = State.find_by(ansi_id: row["FIPST"]).id
+
     district = District.find_or_initialize_by(nces_id: row["LEAID"],
                                               district_name: row["LEANM"],
-                                              state_id: row["FIPST"])
+                                              state_id: state_id)
     district.save!
 
     city = City.find_or_initialize_by(city_name: row["LCITY"],
-                                      state_id: row["FIPST"])
+                                      state_id: state_id)
     city.save!
 
-    ansi = row["FIPST"].first.id
     school = School.find_or_initialize_by(ncessch: row["NCESSCH"],
                                           district_id: district.id,
                                           city_id: city.id,
-                                          state_id: State.where(ansi_id: ansi))
+                                          state_id: state_id)
     school.survyear = row["SURVYEAR"]
     school.fipst = state_ids[row["FIPST"]]
     school.leaid = row["LEAID"]
