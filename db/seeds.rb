@@ -380,7 +380,19 @@ puts Time.now.strftime("%d/%m/%Y %H:%M")
 CSV.foreach('db/seeds/sc121a_supp.full.fixed.txt', col_sep: "\t",
                                                    headers: true) do |row|
   ActiveRecord::Base.transaction do
-    school = School.find_or_initialize_by(ncessch: row["NCESSCH"])
+    district = District.find_or_initialize_by(nces_id: row["LEAID"],
+                                              district_name: row["LEANM"],
+                                              state_id: row["FIPST"])
+    district.save!
+
+    city = City.find_or_initialize_by(city_name: row["LCITY"],
+                                      state_id: row["FIPST"])
+    city.save!
+
+    school = School.find_or_initialize_by(ncessch: row["NCESSCH"],
+                                          district_id: district.id,
+                                          city_id: city.id,
+                                          state_id: State.where(ansi_id: row["FIPST"]).first.id)
     school.survyear = row["SURVYEAR"]
     school.fipst = state_ids[row["FIPST"]]
     school.leaid = row["LEAID"]
@@ -702,15 +714,6 @@ CSV.foreach('db/seeds/sc121a_supp.full.fixed.txt', col_sep: "\t",
     school.tralf = row["TRALF"]
     school.toteth = row["TOTETH"]
     school.save!
-
-    district = District.find_or_initialize_by(nces_id: row["LEAID"],
-                                              district_name: row["LEANM"],
-                                              state_id: row["FIPST"])
-    district.save!
-
-    city = City.find_or_initialize_by(city_name: row["LCITY"],
-                                      state_id: row["FIPST"])
-    city.save!
 
     seed_count += 1
     print "."
