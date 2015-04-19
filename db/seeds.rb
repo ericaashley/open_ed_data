@@ -389,10 +389,11 @@ CSV.foreach('db/seeds/sc121a_supp.full.fixed.txt', col_sep: "\t",
                                       state_id: row["FIPST"])
     city.save!
 
+    ansi = row["FIPST"].first.id
     school = School.find_or_initialize_by(ncessch: row["NCESSCH"],
                                           district_id: district.id,
                                           city_id: city.id,
-                                          state_id: State.where(ansi_id: row["FIPST"]).first.id)
+                                          state_id: State.where(ansi_id: ansi))
     school.survyear = row["SURVYEAR"]
     school.fipst = state_ids[row["FIPST"]]
     school.leaid = row["LEAID"]
