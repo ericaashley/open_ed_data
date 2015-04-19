@@ -78,8 +78,11 @@ ActiveRecord::Schema.define(version: 20150414223141) do
   end
 
   create_table "schools", force: :cascade do |t|
+    t.integer  "district_id"
+    t.integer  "city_id"
+    t.integer  "state_id"
     t.string   "survyear"
-    t.string   "ncessch",    null: false
+    t.string   "ncessch",     null: false
     t.string   "fipst"
     t.string   "leaid"
     t.string   "schno"
@@ -399,8 +402,8 @@ ActiveRecord::Schema.define(version: 20150414223141) do
     t.integer  "tralm"
     t.integer  "tralf"
     t.integer  "toteth"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "states", force: :cascade do |t|
