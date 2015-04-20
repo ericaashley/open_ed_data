@@ -1,4 +1,3 @@
 class DistrictSerializer < ActiveModel::Serializer
-  embed :ids
-  attributes :id, :district_name
+  attributes :id, :nces_id, :district_name
 end
