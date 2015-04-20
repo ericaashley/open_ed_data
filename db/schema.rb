@@ -78,9 +78,9 @@ ActiveRecord::Schema.define(version: 20150414223141) do
   end
 
   create_table "schools", force: :cascade do |t|
-    t.integer  "district_id"
-    t.integer  "city_id"
-    t.integer  "state_id"
+    t.integer  "district_id", null: false
+    t.integer  "city_id",     null: false
+    t.integer  "state_id",    null: false
     t.string   "survyear"
     t.string   "ncessch",     null: false
     t.string   "fipst"
