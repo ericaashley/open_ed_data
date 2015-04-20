@@ -4,9 +4,9 @@ class CreateSchools < ActiveRecord::Migration
     # variable "TYPE" - which has been renamed to "sch_type" to avoid db seeding
     # issues.
     create_table :schools do |t|
-      t.integer :district_id
-      t.integer :city_id
-      t.integer :state_id
+      t.integer :district_id, null: false
+      t.integer :city_id, null: false
+      t.integer :state_id, null: false
       t.string :survyear
       t.string :ncessch, null: false
       t.string :fipst
