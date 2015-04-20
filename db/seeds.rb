@@ -87,6 +87,14 @@ school_title_ones = {
     eligible: "Not eligible for Title I Targeted Assistance (TAS) or " +
       "Schoolwide program",
     program: "Not applicable"
+  },
+  "M" => {
+    eligible: "Missing data",
+    program: "Missing data"
+  },
+  "N" => {
+    eligible: "Not applicable",
+    program: "Not applicable"
   }
 }
 
