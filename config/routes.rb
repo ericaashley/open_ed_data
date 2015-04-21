@@ -4,6 +4,18 @@ Rails.application.routes.draw do
   # match '/' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
   match "users/auth/failure" => "users#failure", via: [:get, :patch],
                                 as: :failure
+
+  namespace :api do
+    namespace :v1 do
+      resources :states, only: [:index] do
+        resources :districts, only: [:index]
+      end
+
+      resources :districts, only: [:index] do
+        resources :schools, only: [:index]
+      end
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
