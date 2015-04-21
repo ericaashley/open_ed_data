@@ -1,7 +1,7 @@
 class SchoolSerializer < ActiveModel::Serializer
   attributes :id, :ncessch, :schnam, :level, :sch_type, :chartr, :magnet,
-             :school_title_one_eligible, :school_title_one_program,
-             :member, :totfrl_perc
+                  :school_title_one_eligible, :school_title_one_program,
+                  :member, :totfrl_perc
 
   def level
     SchoolLevel.find(object.level).school_level_name

@@ -25,7 +25,7 @@ FactoryGirl.define do
   factory :district do
     association :state
 
-    sequence(:nces_id) { |n| "ID#{n}"}
+    sequence(:nces_id) { |n| "ID#{n}" }
     sequence(:district_name) { |n| "District#{n}" }
 
     # factory :district_with_school do

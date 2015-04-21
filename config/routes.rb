@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         resources :districts, only: [:index]
       end
 
-      resources :districts, only: [:show] do
+      resources :districts, only: [:index] do
         resources :schools, only: [:index]
       end
     end
