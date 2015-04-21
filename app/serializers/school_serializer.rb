@@ -1,6 +1,6 @@
 class SchoolSerializer < ActiveModel::Serializer
   attributes :id, :ncessch, :schnam, :level, :sch_type, :chartr, :magnet,
-            #  :school_title_one_eligible, :school_title_one_program
+             :school_title_one_eligible, :school_title_one_program,
              :member, :totfrl_perc
 
   def level
@@ -19,13 +19,13 @@ class SchoolSerializer < ActiveModel::Serializer
     SchoolMagnet.find(object.magnet).school_magnet_name
   end
 
-  # def school_title_one_eligible
-  #   SchoolTitleOne.find(object.titleistat).school_title_one_eligible
-  # end
-  #
-  # def school_title_one_program
-  #   SchoolTitleOne.find(object.titleistat).school_title_one_program
-  # end
+  def school_title_one_eligible
+    SchoolTitleOne.find(object.titleistat).school_title_one_eligible
+  end
+
+  def school_title_one_program
+    SchoolTitleOne.find(object.titleistat).school_title_one_program
+  end
 
   def member
     enrollment = object.member
