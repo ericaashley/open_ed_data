@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   match "users/auth/failure" => "users#failure", via: [:get, :patch],
                                 as: :failure
 
+  resources :states, only: [:index, :show]
+
   namespace :api do
     namespace :v1 do
       resources :states, only: [:index] do
@@ -16,6 +18,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get 'graph/index'
+  get 'graph/data', :defaults => { :format => 'json' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
