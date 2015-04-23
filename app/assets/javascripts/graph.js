@@ -1,16 +1,16 @@
 var StateId = document.getElementById("circle_pack").getAttribute('data-state-id');
 
 $.ajax({
-           type: "GET",
-           contentType: "application/json; charset=utf-8",
-           url: '/states/' + StateId,
-           dataType: 'json',
-           success: function (data) {
-               draw(data);
-           },
-           error: function (result) {
-               error();
-           }
+         type: "GET",
+         contentType: "application/json; charset=utf-8",
+         url: '/states/' + StateId,
+         dataType: 'json',
+         success: function (data) {
+             draw(data);
+         },
+         error: function (result) {
+             error();
+         }
  });
 
 function draw(data) {

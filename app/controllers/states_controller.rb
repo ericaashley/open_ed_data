@@ -9,10 +9,12 @@ class StatesController < ApplicationController
   end
 
   def show
-    @state = State.find(params[:id])
-    @data = @state.data_structure
     respond_to do |format|
-      format.json { render :json => @data }
+      format.json do
+        @state = State.includes(:schools, :districts).find(params[:id])
+        @data = @state.data_structure
+        render :json => @data
+      end
       format.html { render :show }
     end
   end
