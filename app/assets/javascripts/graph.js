@@ -15,8 +15,8 @@ $.ajax({
  });
 
 function draw(data) {
-  var $circlePack = $('#circle_pack');
-  var stateId = $circlePack.data('state-id');
+  var $circlePack = $("#circle_pack");
+  var stateId = $circlePack.data("state-id");
 
   var margin = 20,
     diameter = 960;
@@ -59,7 +59,7 @@ function draw(data) {
         })
         .on("click", function(d) {
           if (focus !== d) {
-            zoom(d)
+            zoom(d);
             d3.event.stopPropagation();
           }
         });
