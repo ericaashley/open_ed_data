@@ -1,18 +1,20 @@
-var stateId = document.getElementById("circle_pack")
-    .getAttribute("data-state-id");
+$(function() {
+  var stateId = document.getElementById("circle_pack")
+      .getAttribute("data-state-id");
 
-$.ajax({
-         type: "GET",
-         contentType: "application/json; charset=utf-8",
-         url: "/states/" + stateId,
-         dataType: "json",
-         success: function (data) {
-             draw(data);
-         },
-         error: function (result) {
-             error();
-         }
- });
+  $.ajax({
+     type: "GET",
+     contentType: "application/json; charset=utf-8",
+     url: "/states/" + stateId,
+     dataType: "json",
+     success: function (data) {
+         draw(data);
+     },
+     error: function (result) {
+         error();
+     }
+   });
+});
 
 function draw(data) {
   var $circlePack = $("#circle_pack");
@@ -23,7 +25,7 @@ function draw(data) {
 
   var color = d3.scale.linear()
       .domain([-1, 5])
-      .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
+      .range(["hsl(296,50%,94%)", "hsl(300,3%,29%)"])
       .interpolate(d3.interpolateHcl);
 
   var pack = d3.layout.pack()
@@ -66,7 +68,7 @@ function draw(data) {
 
     var text = svg.selectAll("text")
         .data(nodes)
-      .enter().append("text")
+        .enter().append("text")
         .attr("class", "label")
         .style("fill-opacity", function(d) {
           return d.parent === root ? 1 : 0;
@@ -79,8 +81,9 @@ function draw(data) {
     var node = svg.selectAll("circle,text");
 
     d3.select("body")
-        .style("background", color(-1))
-        .on("click", function() { zoom(root); });
+      .style("background", color(-1))
+      .on("click", function() { zoom(root);
+       });
 
     zoomTo([root.x, root.y, root.r * 2 + margin]);
 
@@ -127,5 +130,5 @@ function draw(data) {
 }
 
 function error() {
-  console.log("error")
+  console.log("error");
 }

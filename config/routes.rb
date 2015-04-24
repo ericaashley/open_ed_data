@@ -6,6 +6,9 @@ Rails.application.routes.draw do
                                 as: :failure
 
   resources :states, only: [:index, :show]
+  resources :districts, only: [:index] do
+    resources :schools, only: [:show]
+  end
 
   namespace :api do
     namespace :v1 do
