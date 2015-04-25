@@ -61,4 +61,9 @@ FactoryGirl.define do
     #   end
     # end
   end
+
+  factory :school_level do
+    sequence(:nces_id) { |n| "NCESID#{n}" }
+    sequence(:school_level_name) { |n| "SchoolLevel#{n}" }
+  end
 end
