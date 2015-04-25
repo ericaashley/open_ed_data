@@ -82,8 +82,7 @@ function draw(data) {
 
     d3.select("body")
       .style("background", color(-1))
-      .on("click", function() { zoom(root);
-       });
+      .on("click", function() { zoom(root); });
 
     zoomTo([root.x, root.y, root.r * 2 + margin]);
 
