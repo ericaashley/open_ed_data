@@ -1,5 +1,5 @@
 class School < ActiveRecord::Base
-  belongs_to :state, foreign_key: "fipst"
+  belongs_to :state, foreign_key: "state_id"
   belongs_to :district, foreign_key: "district_id"
   belongs_to :city, foreign_key: "city_id"
   belongs_to :school_level, foreign_key: "level"
