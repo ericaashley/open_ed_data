@@ -31,7 +31,7 @@ $.getJSON(url, function (json) {
         return obj.stateAbbrev == d;
       });
 
-			var stateId = stateObj[0]["stateId"]
+			var stateId = stateObj[0]["stateId"],
           districtCount = stateObj[0]["districtCount"],
           schoolCount = stateObj[0]["schoolCount"];
 			finalData[d] = {
