@@ -38,7 +38,7 @@ $.getJSON(url, function (json) {
           state_id: state_id,
           district_count: district_count,
           school_count: school_count,
-          color:d3.interpolate("#ffffcc", "#800026")(school_count/5000)
+          color:d3.interpolate("#ffffcc", "#027B7F")(school_count/5000)
       };
 		});
 
