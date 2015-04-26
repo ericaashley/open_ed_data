@@ -1,0 +1,17 @@
+.top-bar .name h1 {
+  font-size: 1.1rem;
+}
+
+.top-bar-section ul li > a {
+  font-family: 'Patua One', cursive;
+  font-size: 1.1rem;
+}
+
+body {
+  font-family: 'Patua One', cursive;
+}
+
+h1 {
+  font-family: 'Patua One', cursive;
+  padding: 0 0.9375rem;
+}
