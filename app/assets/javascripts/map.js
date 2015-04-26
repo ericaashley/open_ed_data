@@ -1,21 +1,21 @@
 var url = "http://localhost:3000/api/v1/states.jsonp?callback=?";
 
 $.getJSON(url, function (json) {
-  var statesData = new Array;
+  var statesData = new Array();
   for (i = 0; i < 58; i++) {
       statesData.push({
-        state_id: json.states[i].id,
-        state_abbrev: json.states[i].state_abbrev,
-        state_name: json.states[i].state_name,
-        district_count: json.states[i].district_count,
-        school_count: json.states[i].school_count
+        stateId: json.states[i].id,
+        stateAbbrev: json.states[i].state_abbrev,
+        stateName: json.states[i].state_name,
+        districtCount: json.states[i].district_count,
+        schoolCount: json.states[i].school_count
       });
-  };
+  }
 
-  function tooltipHtml(n, d){	/* function to create html content string in tooltip div. */
+  function tooltipHtml(n, d) {
 		return "<h4>"+n+"</h4><table>"+
-			"<tr><td>Districts:</td><td>"+(d.district_count)+"</td></tr>"+
-			"<tr><td>Schools:</td><td>"+(d.school_count)+"</td></tr>"+
+			"<tr><td>Districts:</td><td>"+(d.districtCount)+"</td></tr>"+
+			"<tr><td>Schools:</td><td>"+(d.schoolCount)+"</td></tr>"+
 			"</table>";
 	}
 
@@ -27,18 +27,18 @@ $.getJSON(url, function (json) {
 	"CO", "NM", "OR", "ND", "SD", "NE", "IA", "MS", "IN", "IL", "MN",
 	"WI", "MO", "AR", "OK", "KS", "LA", "VA"]
 		.forEach(function(d) {
-      var state_obj = statesData.filter(function(obj) {
-        return obj.state_abbrev == d;
+      var stateObj = statesData.filter(function(obj) {
+        return obj.stateAbbrev == d;
       });
 
-			var state_id = state_obj[0]["state_id"]
-        district_count = state_obj[0]["district_count"],
-        school_count = state_obj[0]["school_count"];
+			var stateId = stateObj[0]["stateId"]
+          districtCount = stateObj[0]["districtCount"],
+          schoolCount = stateObj[0]["schoolCount"];
 			finalData[d] = {
-          state_id: state_id,
-          district_count: district_count,
-          school_count: school_count,
-          color:d3.interpolate("#ffffcc", "#027B7F")(school_count/5000)
+          stateId: stateId,
+          districtCount: districtCount,
+          schoolCount: schoolCount,
+          color:d3.interpolate("#ffffcc", "#027B7F")(schoolCount/5000)
       };
 		});
 

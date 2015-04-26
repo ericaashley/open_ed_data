@@ -68,7 +68,7 @@
 		}
 
 		function clickState(d) {
-			var url = "http://localhost:3000/states/" + data[d.id].state_id;
+			var url = "http://localhost:3000/states/" + data[d.id].stateId;
 			window.location.assign(url)
 		}
 
