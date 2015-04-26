@@ -242,7 +242,7 @@ states = {
     abbrev: "NY"
   },
   "37" => {
-    name: "North Caraolina",
+    name: "North Carolina",
     abbrev: "NC"
   },
   "38" => {

@@ -4,7 +4,7 @@ class StatesController < ApplicationController
 
   def show
     @state = State.includes(:schools, :districts).find(params[:id])
-    
+
     respond_to do |format|
       format.json do
         @districts = District.includes(:schools).where("state_id = #{params[:id]}")
