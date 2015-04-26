@@ -13,7 +13,7 @@
 	text-align: center;
 	padding: 20px;
 	margin: 10px;
-	font: 12px sans-serif;
+	font: 12px 'Patua One', cursive;
 	background: lightsteelblue;
 	border: 1px;
 	border-radius: 2px;
@@ -21,8 +21,9 @@
 }
 
 #tooltip h4{
-	margin:0;
-	font-size:14px;
+	margin: 0;
+	font: 14px 'Patua One', cursive;
+	color: white;
 }
 
 #tooltip{
