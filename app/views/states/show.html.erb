@@ -1,3 +1,12 @@
-<h1><%= @state.state_name %></h1>
+<h1><%= @state.state_name %> Schools by District and Level (Elementary, Middle,
+  High School)</h1>
 
-<svg id="circle_pack" data-state-id="<%= params[:id] %>"></svg>
+<div>
+  <span>Circle size corresponds with school size.</span><br>
+  <span>Data Source: <a href="https://nces.ed.gov/ccd/pubschuniv.asp">National Center
+  for Education Statistics Common Core of Data Public Elementary/Secondary
+  School Universe Survey: School Year 2012-13, Provisional Version 1a</a>.
+  </span>
+</div>
+
+<div><%= render "circle_packing" %></div>

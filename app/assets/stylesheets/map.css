@@ -21,8 +21,9 @@
 }
 
 #tooltip h4{
-	margin:0;
-	font-size:14px;
+	margin: 0;
+	font: 14px 'Patua One', cursive;
+	color: white;
 }
 
 #tooltip{

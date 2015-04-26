@@ -1,5 +1,10 @@
-.top-bar .name h1 {
+nav .top-bar {
+  background: #000032;
+}
+
+.top-bar .title-area .name h1 {
   font-size: 1.1rem;
+  padding: 0rem;
 }
 
 .top-bar-section ul li > a {
@@ -9,9 +14,41 @@
 
 body {
   font-family: 'Patua One', cursive;
+  background: white;
+}
+
+body .style {
+  background: white;
+}
+
+#statesvg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+}
+
+#circlepacksvg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+}
+
+#circle_pack {
+  display: none;
 }
 
 h1 {
   font-family: 'Patua One', cursive;
-  padding: 0 0.9375rem;
+  padding: 0.9375rem;
+}
+
+span {
+  padding-left: 0.9375rem;
+}
+
+div p {
+  padding: 0.9375rem;
+  margin-top: 1rem;
 }

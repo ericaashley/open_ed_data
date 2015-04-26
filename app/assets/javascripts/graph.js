@@ -36,6 +36,7 @@ function draw(data) {
   var svg = d3.select("body").append("svg")
       .attr("width", diameter)
       .attr("height", diameter)
+      .attr("id", "circlepacksvg")
       .append("g")
       .attr("transform",
             "translate(" + diameter / 2 + "," + diameter / 2 + ")");
