@@ -1,4 +1,4 @@
-var url = "http://localhost:3000/api/v1/states.jsonp?callback=?";
+var url = "http://open-ed.herokuapp.com/api/v1/states.jsonp?callback=?";
 
 $.getJSON(url, function (json) {
   var statesData = new Array();
