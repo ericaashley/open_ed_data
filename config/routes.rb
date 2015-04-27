@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'homes#index'
+  root 'states#index'
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   # match '/' => 'users#finish_signup', via: [:get, :patch], as: :finish_signup
   match "users/auth/failure" => "users#failure", via: [:get, :patch],
